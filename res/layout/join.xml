@@ -2,22 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top|center"
     android:orientation="vertical"
     android:padding="20dp" >
 
-    <Button
-        android:id="@+id/join_button"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/join_presentation_code_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:onClick="onClick"
-        android:text="@string/join" />
+        android:text="@string/join_presentation_code_label"
+        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/start_button"
+    <EditText
+        android:id="@+id/join_presentation_code_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/start" />
+        android:ems="10"
+        android:inputType="textPassword|numberPassword" >
+
+        <requestFocus />
+    </EditText>
 
 </LinearLayout>
