@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PleaseHoldApplause</string>
+    <string name="join">Join a presentation</string>
+    <string name="start">Start a presentation</string>
 </resources>
