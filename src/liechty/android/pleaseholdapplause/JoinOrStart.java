@@ -16,7 +16,11 @@ public class JoinOrStart extends Activity implements OnClickListener {
 	
 	public void onClick(View v) {
 		if (v.getId() == R.id.join_button) {
-			Intent intent = new Intent(getApplicationContext(), Join.class);
+			Intent intent = new Intent(getApplicationContext(), JoinPresentation.class);
+			startActivity(intent);
+		}
+		else if (v.getId() == R.id.start_button) {
+			Intent intent = new Intent(getApplicationContext(), StartPresentation.class);
 			startActivity(intent);
 		}
 	}
