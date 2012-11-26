@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="liechty.android.pleaseholdapplause"
     android:versionCode="1"
@@ -9,17 +10,40 @@
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo.Light" >
-        <activity android:name="JoinOrStart" >
+        android:label="@string/app_name" >
+        <activity
+            android:name="liechty.android.pleaseholdapplause.Splashscreen"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".JoinPresentation" />
-        <activity android:name=".StartPresentation" />
+        <activity
+            android:name="liechty.android.pleaseholdapplause.JoinOrStart"
+            android:exported="false" />
+        <activity
+            android:name="liechty.android.pleaseholdapplause.ChooseByCode"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible" >
+            <intent-filter>
+                <action android:name="liechty.pleaseholdapplause.intent.CHOOSEPRESENTATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="liechty.android.pleaseholdapplause.RequestPresentation"
+            android:exported="false" />
+        <activity
+            android:name="liechty.android.pleaseholdapplause.AttendPresentation"
+            android:label="@string/title_activity_attend_presentation" />
+        <activity
+            android:name="liechty.android.pleaseholdapplause.DeliverPresentation"
+            android:label="@string/title_activity_deliver_presentation" >
+        </activity>
     </application>
 
 </manifest>

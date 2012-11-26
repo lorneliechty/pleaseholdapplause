@@ -22,4 +22,12 @@
         <requestFocus />
     </EditText>
 
+    <Button
+        android:id="@+id/choose_by_code_submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:onClick="onClick"
+        android:text="@string/join_presentation_code_submit_button" />
+
 </LinearLayout>
