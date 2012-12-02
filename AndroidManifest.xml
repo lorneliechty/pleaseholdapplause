@@ -42,8 +42,24 @@
             android:label="@string/title_activity_attend_presentation" />
         <activity
             android:name="liechty.android.pleaseholdapplause.DeliverPresentation"
-            android:label="@string/title_activity_deliver_presentation" >
+            android:label="@string/title_activity_deliver_presentation" />
+        <activity
+            android:name="liechty.android.pleaseholdapplause.ChooseByList"
+            android:exported="false"
+            android:label="@string/title_activity_choose_by_list" >
+            <intent-filter>
+                <action android:name="liechty.pleaseholdapplause.intent.CHOOSEPRESENTATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+
+        <provider
+            android:name="liechty.android.pleaseholdapplause.provider.PHAProvider"
+            android:authorities="liechty.android.pleaseholdapplause"
+            android:enabled="true"
+            android:exported="false" >
+        </provider>
     </application>
 
 </manifest>

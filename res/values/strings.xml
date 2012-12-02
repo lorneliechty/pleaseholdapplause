@@ -16,5 +16,6 @@
     <string name="title_activity_attend_presentation">AttendPresentation</string>
     <string name="join_presentation_code_submit_button">Submit</string>
     <string name="title_activity_deliver_presentation">Deliver Presentation</string>
+    <string name="title_activity_choose_by_list">Choose a Presentation</string>
 
 </resources>

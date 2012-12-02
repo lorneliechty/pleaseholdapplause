@@ -27,7 +27,7 @@ public class ChooseByCode extends Activity implements OnClickListener {
 				String code = edit.getText().toString();
 				
 				Intent intent = new Intent();
-				intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, Integer.parseInt(code));
+				intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, Long.parseLong(code));
 				setResult(RESULT_OK, intent);
 				
 				finish();
