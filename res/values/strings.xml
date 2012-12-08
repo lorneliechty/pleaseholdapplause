@@ -18,5 +18,8 @@
     <string name="title_activity_deliver_presentation">Deliver Presentation</string>
     <string name="title_activity_choose_by_list">Choose from List</string>
     <string name="title_activity_choose_by_code">Enter Code</string>
+    <string name="pause">pause</string>
+    <string name="reset">reset</string>
+    <string name="presentation_timer_clock_start_text">00:00</string>
     
 </resources>
