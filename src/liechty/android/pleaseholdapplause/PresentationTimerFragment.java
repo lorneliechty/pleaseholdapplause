@@ -31,6 +31,8 @@ public class PresentationTimerFragment extends Fragment implements OnClickListen
 	TextView mClock = null;
 	long mStartTime = (long) 0.0;
 	
+	private static final String OSIS_KEY_START_TIME_LONG = "StartTime";
+	
 	BroadcastReceiver mTimeTickReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -43,7 +45,19 @@ public class PresentationTimerFragment extends Fragment implements OnClickListen
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mStartTime = System.currentTimeMillis();
+
+		// Check to see if we've cached the Activity state prior to this create
+		// e.g., due to a screen rotation.
+		if (savedInstanceState != null) {
+			mStartTime = savedInstanceState.getLong(OSIS_KEY_START_TIME_LONG, -1);
+		} else {
+			mStartTime = -1;
+		}
+
+		if (mStartTime == -1) {
+			mStartTime = System.currentTimeMillis();
+		}
+		
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,6 +92,12 @@ public class PresentationTimerFragment extends Fragment implements OnClickListen
 		super.onStop();
 		
 		getActivity().unregisterReceiver(mTimeTickReceiver);
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		outState.putLong(OSIS_KEY_START_TIME_LONG, mStartTime);
+		super.onSaveInstanceState(outState);
 	}
 
 	public void onClick(View v) {
