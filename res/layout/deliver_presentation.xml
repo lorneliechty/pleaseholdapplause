@@ -13,13 +13,11 @@
         android:layout_height="wrap_content"
         tools:layout="@layout/presentation_timer" />
 
-    <!--
-         <View
-        android:id="@+id/spacer"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.66" />
-    -->
+        android:text="@string/hello_world" />
 
     <View
         android:id="@+id/view1"

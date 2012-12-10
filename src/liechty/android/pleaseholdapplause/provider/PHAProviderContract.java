@@ -19,6 +19,7 @@ public final class PHAProviderContract {
 			public static final String VENUE = "venue";
 			public static final String START_TIME_epoch_s = "start";
 			public static final String END_TIME_epoch_s = "end";
+			public static final String WEB_ID = "web_id";
 			
 		}
 		

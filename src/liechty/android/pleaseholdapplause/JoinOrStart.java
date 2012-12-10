@@ -2,6 +2,7 @@ package liechty.android.pleaseholdapplause;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,7 +39,7 @@ public class JoinOrStart extends Activity implements OnClickListener {
 			joinPresentation(data.getLongExtra(PHAIntent.Extra.PRESENTATION_ID, 0));
 		}
 		else if (requestCode == REQUEST_CODE_REQUEST_PRESENTATION && resultCode == RESULT_OK) {
-			startPresentation(data.getLongExtra(PHAIntent.Extra.PRESENTATION_ID, 0));
+			startPresentation(data.getData());
 		}
 	}
 	
@@ -48,9 +49,9 @@ public class JoinOrStart extends Activity implements OnClickListener {
 		startActivity(intent);
 	}
 	
-	private void startPresentation(long presentationID) {
+	private void startPresentation(Uri presentationUri) {
 		Intent intent = new Intent(getApplicationContext(), DeliverPresentation.class);
-		intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, presentationID);
+		intent.setData(presentationUri);
 		startActivity(intent);
 	}
 }

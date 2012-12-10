@@ -11,6 +11,7 @@ public final class PresentationsTable {
 		public static final String VENUE = "venue";
 		public static final String START_TIME_epoch_s = "start";
 		public static final String END_TIME_epoch_s = "end";
+		public static final String WEB_ID = "web_id";
 	}
 	
 	public static String getCreateStatement() {
@@ -20,7 +21,8 @@ public final class PresentationsTable {
 				+ Columns.TITLE + " TEXT, "
 				+ Columns.VENUE + " TEXT, "
 				+ Columns.START_TIME_epoch_s + " INTEGER, "
-				+ Columns.END_TIME_epoch_s + " INTEGER"
+				+ Columns.END_TIME_epoch_s + " INTEGER,"
+				+ Columns.WEB_ID + " INTEGER"
 				+ ");";
 	}
 }

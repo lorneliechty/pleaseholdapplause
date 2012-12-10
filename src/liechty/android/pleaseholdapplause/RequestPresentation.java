@@ -36,7 +36,7 @@ public class RequestPresentation extends Activity implements OnClickListener {
     		
     		if (presentationUri != null) {
 				Intent intent = new Intent();
-				intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, Long.parseLong(presentationUri.getLastPathSegment()));
+				intent.setData(presentationUri);
 				setResult(RESULT_OK, intent);
 				finish();
     		}
