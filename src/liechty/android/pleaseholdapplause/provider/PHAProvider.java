@@ -77,8 +77,20 @@ public class PHAProvider extends ContentProvider {
 
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// Implement this to handle requests to delete one or more rows.
-		throw new UnsupportedOperationException("Not yet implemented");
+		int result = 0;
+		
+		int match = sMatcher.match(uri);
+		switch (match) {
+			case PRESENTATIONS:
+				SQLiteDatabase db = mDBHelper.getWritableDatabase();
+				db.delete(PresentationsTable.TABLE_NAME, null, null);
+				break;
+				
+			default:
+				throw new IllegalArgumentException("Cannot insert to Uri: " + uri);
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -121,14 +133,16 @@ public class PHAProvider extends ContentProvider {
         	getContext().getContentResolver().notifyChange(uri, null);			// General update
             getContext().getContentResolver().notifyChange(result, null);		// Specific to this new entry
             
-            // We're not done yet though... we need to know the web_id of this newly requested presentation.
-            // Until we get a web_id no one else can actually join the presentation!
-            // Use the Service implementing REQUEST_PRESENTATION for this... it will be the responsibility
-            // of that Service to come back and update this URI when it is finished. 
-            Log.d(LOG_TAG, "Sending Request for web ID");
-            Intent intent = new Intent(getContext(),RequestPresentationService.class);
-            intent.setData(result);
-            getContext().startService(intent);
+            if (values.getAsLong(PHAProviderContract.Presentation.CursorColumns.WEB_ID) == null) {
+            	// We're not done yet though... we need to know the web_id of this newly requested presentation.
+            	// Until we get a web_id no one else can actually join the presentation!
+            	// Use the Service implementing REQUEST_PRESENTATION for this... it will be the responsibility
+            	// of that Service to come back and update this URI when it is finished. 
+            	Log.d(LOG_TAG, "Sending Request for web ID");
+            	Intent intent = new Intent(getContext(),RequestPresentationService.class);
+            	intent.setData(result);
+            	getContext().startService(intent);
+            }
         }
 		
 		return result;

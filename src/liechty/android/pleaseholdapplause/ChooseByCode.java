@@ -1,12 +1,11 @@
 package liechty.android.pleaseholdapplause;
 
+import liechty.android.pleaseholdapplause.provider.PHAProviderContract;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ public class ChooseByCode extends Activity implements OnClickListener {
 				String code = edit.getText().toString();
 				
 				Intent intent = new Intent();
-				intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, Long.parseLong(code));
+				intent.setData(PHAProviderContract.Presentation.getPresentation(Long.parseLong(code)));
 				setResult(RESULT_OK, intent);
 				
 				finish();

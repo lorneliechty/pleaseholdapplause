@@ -36,16 +36,16 @@ public class JoinOrStart extends Activity implements OnClickListener {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if (requestCode == REQUEST_CODE_CHOOSE_PRESENTATION && resultCode == RESULT_OK ) {
-			joinPresentation(data.getLongExtra(PHAIntent.Extra.PRESENTATION_ID, 0));
+			joinPresentation(data.getData());
 		}
 		else if (requestCode == REQUEST_CODE_REQUEST_PRESENTATION && resultCode == RESULT_OK) {
 			startPresentation(data.getData());
 		}
 	}
 	
-	private void joinPresentation(long presentationID) {
+	private void joinPresentation(Uri presentationUri) {
 		Intent intent = new Intent(getApplicationContext(), AttendPresentation.class);
-		intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, presentationID);
+		intent.setData(presentationUri);
 		startActivity(intent);
 	}
 	

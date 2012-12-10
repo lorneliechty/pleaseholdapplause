@@ -1,6 +1,7 @@
 package liechty.android.pleaseholdapplause;
 
 import liechty.android.pleaseholdapplause.PresentationListFragment.PresentationListItemClickListener;
+import liechty.android.pleaseholdapplause.provider.PHAProviderContract;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -16,7 +17,7 @@ public class ChooseByList extends FragmentActivity implements PresentationListIt
 
 	public void onPresentationListItemClick(View v, long presentationID) {
 		Intent intent = new Intent();
-		intent.putExtra(PHAIntent.Extra.PRESENTATION_ID, presentationID);
+		intent.setData(PHAProviderContract.Presentation.getPresentation(presentationID));
 		setResult(RESULT_OK, intent);
 		
 		finish();

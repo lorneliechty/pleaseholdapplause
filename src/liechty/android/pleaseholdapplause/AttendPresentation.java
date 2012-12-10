@@ -13,19 +13,15 @@ public class AttendPresentation extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.attend_presentation);
 		
-		long presentationCode = getIntent().getLongExtra(PHAIntent.Extra.PRESENTATION_ID, 0);
-		
-		Cursor c = getContentResolver().query(PHAProviderContract.Presentation.getPresentation(presentationCode), 
+		Cursor c = getContentResolver().query(getIntent().getData(), 
 				null, null, null, null);
 		
-		String title = null;
+		long web_id = 0;
 		if (c != null && c.moveToFirst()) {
-			title = c.getString(c.getColumnIndex(PHAProviderContract.Presentation.CursorColumns.TITLE));
+			web_id = c.getLong((c.getColumnIndex(PHAProviderContract.Presentation.CursorColumns.WEB_ID)));
 		}
 		
-		if (presentationCode != 0) {
-			((TextView)findViewById(R.id.attend_presentation_id_label)).setText(
-					Long.toString(presentationCode) + " : " + title);
-		}
+		((TextView)findViewById(R.id.attend_presentation_id_label)).setText(
+				"web ID : " + String.valueOf(web_id));
 	}
 }
